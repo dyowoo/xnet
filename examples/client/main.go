@@ -16,7 +16,7 @@ import (
 )
 
 func main() {
-	l := 1
+	l := 10
 	var clientList = make(map[int]xnet.IClient, l)
 	for i := 1; i <= l; i++ {
 		go func(i int) {
@@ -35,13 +35,6 @@ func main() {
 
 				fmt.Printf("收到服务端数据: %s\n", string(request.GetData()))
 			})
-
-			//go func(i int) {
-			//	for {
-			//		_ = client.Conn().SendMsg(1, []byte(fmt.Sprintf("client: %3d", i)))
-			//		time.Sleep(time.Second * 1)
-			//	}
-			//}(i)
 
 		}(i)
 	}
